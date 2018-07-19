@@ -51,5 +51,39 @@ This design is chosen due to its flexibility to balance the performance metrics.
 Simulations have shown that the termination resistance ($R_{l}$) and ($R_{d}$) are dominant in the power consumption.
 
 %Problem formulation and optimization flow
+To find the optimum passive compensation for high speed compensation four parameters are optimized: $R_{l}$, $R_{d}$, $C_{d}$ and $R_{s}$.
+Here $R_{s}$ is the output resistance of the inverter chain output.
+It has to be optimized to minimize the sense amplifier delay.
 
+This optimization problem is constrained as a non-linear programming problem and uses the \acc{sqp} to solve it.
+The global design goals are to minimize: latency (\textbf{min-d}), latency-power product (\textbf{min-dp}) and the $latency^{2}$-power product (\textbf{min-ddp}).
+% global explanation of optimizaiton work flow
+The optimization flow inputs are the technology node and wire dimensions.
+Then the wire and transceiver model are build respectively.
+In each iteration the delay and power parameters of the wire are derived after which the step response of the T-line is simulated.
+Based on this the eye opening is determined.
+Given the design goals the cost function is evaluated by combination of delay and power of both wires and transceivers.
+This is utilized by the \ac{sqp} algorithm for optimization.
+Finally, the flow output the optimal values.
 
+% Experimental results
+The scheme is optimized under the aforementioned design goals and with four different spacing and then compared with repated RC wires (which are also optimized for the different design goals).
+
+For comparison purposes the normalised delay, power and throughput are used which are respectively defined as: $delay_{n} = \frac{\text{propagation delay}}{\text{wire length}}$, $power_{n} = \frac{\text{energy per bit}}{\text{wire length}}$ and $throughput_{n} = \frac{\text{frequency}}{\text{wire pitch}}$.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.95\linewidth]{Figures/Rep3NormThrough.png}
+	\caption{Normalized throughput between repeated RC wire and on-chip T-line, Source: \cite{zhang2009high}.} 
+    \label{fig:rep3:normthrough}
+\end{figure}
+
+The $delay_{n}$ and $power_{n}$ of  \ac{otl} are much better than the RC wire. For $delay_{n}$ from the 60 nm technology node the \ac{otl} performs better.
+For $power_{n}$ the \ac{otl} performs better in the whole technology node spectrum.
+In \cref{fig:rep3:normthrough} the $throughput_{n}$ is shown with regards to the different optimization criteria.
+At \textit{90 nm} technology the RC wire has higher throughput than the \ac{otl}.
+The throughput of RC wires decreases due to the usage of smaller repeaters and smaller wire width to reduce the power in the range from \textit{90 nm} to \textit{45 nm}.
+In general after the \textit{45 nm} technology the throughput of the schemes are very close, but the throughput of the \ac{otl} is higher.
+
+%conclusion
+The wire with the largest spacing (S=2H) give the optimal results, this is due to higher $Z_{0}$ with reduces the attenuation along the wire.
