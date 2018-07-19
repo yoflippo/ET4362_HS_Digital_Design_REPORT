@@ -1,0 +1,57 @@
+\documentclass[conference]{IEEEtran}
+
+\usepackage[pdftex]{graphicx}
+\usepackage{verbatim}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=blue, citecolor=blue]{hyperref} %Adds hyperlinks in pdf version
+\usepackage[open,numbered]{bookmark}%Adds bookmarks in pdf version with opened sublevels
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text 
+\usepackage{charter} %font die HR mooi vindt
+\usepackage{fancyhdr} % Custom headers and footers
+% \usepackage{listings}
+
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{13.6pt} % Customize the height of the header
+\numberwithin{equation}{section} % Number equations within sections
+% \numberwithin{figure}{section} % Number figures within sections
+\numberwithin{table}{section} % Number tables within sections
+%\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+\usepackage{tabu} % For tables (TvE)
+\usepackage{cleveref} % For clever references (\cref, TvE)
+\usepackage[sharp]{easylist} % MS: easy listing
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor} %TvE: text coloring
+\usepackage[utf8]{inputenc}
+\usepackage{lettrine}
+\usepackage[hang]{footmisc} %MS: footnote alignment, https://tex.stackexchange.com/questions/126877/how-can-i-align-a-multiple-line-footnote-text-right-to-the-footnote-mark
+\setlength\footnotemargin{6pt}
+
+%To create a list of abbreviations
+\usepackage{acro}
+\acsetup{first-style=short, hyperref = true}
+% \newcommand*\aclabelfont[1]{\textbf{\acsfont{#1}}}
+\input{abbreviations}
+
+\newcommand{\acc}[1]{\acl{#1} (\ac{#1})}
+\newcommand{\accs}[1]{\acl{#1}s (\ac{#1})}
+% \newcommand{\accp}[1]{\aclp{#1} (\ac{#1})}
+% \newcommand{\acr}[1]{\ac{#1} (\acl{#1})}
+% \newcommand{\acrp}[1]{\acsp{#1} (\acl{#1})}
+
+%% COMMANDS AND PACKAGES FOR REVIEW PAPERS FOR HS DIGITAL EMBEDDED SYSTEMS
+\newcommand{\objective}{\textit{Objective: }}
+\newcommand{\motive}{ \textit{Motive: }}
+\newcommand{\summary}{\textit{Summary: }}
+\usepackage{cancel}
