@@ -3,120 +3,29 @@
 \subsection{A high-speed network interface for distributed-memory systems: architecture and applications \cite{steenkiste1997high}} \label{ss:steenkiste1997high}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%  5  %%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
-% Background of study, is about the research on which you base your study problem, why are you doing it. 
-% A review paper gives an overview of research dealing with a specific topic. 
-% \lettrine{O}{ne} of the first early mentions of \ac{ra} was in papers by Iseli and Baxter \cite{iseli1993spyder, baxter1999icarus}. 
-% However, these implementations were limited in the reconfigurability of functional units and the issue width. % Filler, can be removed.
-% Different closed source alternatives were developed as well \cite{Vassiliadis2004Molen,Hauck20014Chimaera}.
-% Some years later the first usable open source platform was developed by Wong in 2008 \cite{wong2008rho}. 
-% Before that \ac{ra} techniques were closed source and limited due to the state of technology scaling i.e. the number of transistors on a chip.
+\Accs{dmm} have not been successful in using the \acc{hippi} protocol.
+\Ac{hippi} support a data rate of 1.6 Gb/second. in traditional shard-memory supercomputers.
+The problem lies in the high-speed I/O for \ac{dmm}, this is due to the systems working optimally in a distributed fashion while connected to an inherent sequential system.
+An approach to network I/O on \ac{dmm} is to make the network interface responsible for network processing.
+However, this is hard to do, because of potentially thousands of connected processor.
+This approach could be improved by doing some of the communication overhead sensitive activities on the distributed-memory system.
 
-% % Some extra explanation, could be trimmed in a future version
-% % \ac{ra} is closely related to the issue width of an architecture. % Filler, can be removed
-% % The issue width of an architecture determines how many instructions can be executed at the same time. . % Filler, can be removed
-% \acsp{ra} come in two types: \acc{sp} and \acc{vliw}.
-% The difference between \ac{sp} and \ac{vliw} lies in the way the hardware architecture is approached by software.
-% The \ac{sp} architecture contains complex hardware to analyze the instructions (software) and to prevent dependencies.
-% The \ac{vliw} architecture is associated to a compiler.
-% The compiler processes a program in a bundle of instructions optimized for a certain \ac{vliw} architecture.
-% This allows for a relatively simple architecture and low power consumption \cite{hubener2014coreva}. 
-% On the other hand it heavily depends on a compiler which makes the process of developing a computing platform more complex.
-% This review focuses on \ac{vliw}.
+\motive
+There is a bottleneck in communication on \acs{dmm} which needs to be reduced.
 
-% An open source \ac{ra} called \acr{rvex} was introduced back in 2008 by Wong\cite{wong2008rho}. 
-% This processor can adjust its core architecture with the adjustment of a few lines \acr{vhdl} code after which it can be re-synthesized and implemented on a \acr{fpga}, a programmable chip. 
-% In doing so, creating the possibility to optimize the core for a specific application. 
-% The upsurge of \accs{hra} led to the creation of tools to optimize the design exploration of these systems (\cite{jordans2013exploring}).
+\objective
+An I/O architecture is created that supports high-speed I/O using a simple network interface to solve this problem.
 
-% % A sentence to try to explain the focus of papers of interest, to make it explicitly
-% Generally speaking \ac{ra} research focuses on the improvement of performance and energy consumption \cite{jordans2013exploring,giraldo2015energysavingdynamicrc}.  
+\summary
+\Ac{dmm}s communicate through a network interface that is connect both to the external network and the internal interconnect of the system (see: \cref{fig:rep4:conndistrmem}).
 
-% \section{State of the Art Techniques}
-% \label{sec:sota}
-% \lettrine{T}{he} following paragraphs describe state of the art techniques regarding improved implementations of \acsp{ra}.
+High speed I/O for \ac{dmm} is difficult because the system is designed to operate in a distributed fashion where serialization is avoided as much as possible.
+It is hard to implement the following tasks on a \ac{dmm}: communication protocol do not parallelize well, resources need to be scheduled, data that needs to be send/received is typically divided of the private memories of the  nodes.
 
-% \subsection{Abstraction level}
-% A problem with reconfigurable hardware is the complexity and the increasing time to market \cite{wold2014relocatable}.
-% To diminish this problem Wold suggests to raise the abstraction level of the \ac{ra} design process. 
-% Development time can become more efficient by combining an \ac{os} called ReconOS and hardware threads.
-% This is supported by the development of open source tools that simplify the design of \ac{ra} \cite{Sohanghpurwala2011openpr}.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.95\linewidth]{Figures/Rep4DistrMemSys.png}
+	\caption{Connecting a distributed-memory system to a network., Source: \cite{steenkiste1997high}.} 
+    \label{fig:rep4:conndistrmem}
+\end{figure}
 
-% \subsection{Energy consumption}
-% A big body of knowledge supports the fact that the cache of a system consumes most (approximately 50\%) of the energy of a \ac{ra} \cite{malik2000lowpower,yang2002energyefficientcache,zhang2003configurablecache}. 
-
-% Anjam et al. changed the instruction cache (I-cache) of a processor simultaneously with the reconfiguration of the platform \cite{anjam2014Simultaneous}. 
-% By adjusting the cache size simultaneously with the \ac{ra} configuration the \acc{edp} (see \cref{eq:edp}) can be reduced up to 37\% \cite{anjam2014Simultaneous}. 
-% As can be seen in \cref{fig:2014AnJamsimultaneous} the performance of two benchmarks highly depends on the cache size and not the issue width.
-
-% \begin{equation} \label{eq:edp}
-% EDP = Energy \cdot {Cycles} 
-% \end{equation}
-
-% \begin{figure}[H]
-% 	\centering
-% 	\includegraphics[width=1\linewidth]{figures/2014AnJamsimultaneous.png}
-% 	\caption{ The effect of issue width and cache size on EDP Energy and speedup considering two benchmarks: Patrica and Pocsag. Source: \cite{anjam2014Simultaneous} p.7} 
-%     \label{fig:2014AnJamsimultaneous}
-% \end{figure}
-
-% \subsection{Optimize resource utilization}
-% Often, a set of instructions belongs to particular part of the program code that is repeated a lot.
-% A \ac{rra} can adjust its architecture to the needs of the executed set of (repeated) instructions.
-% This could lead to underused hardware in an \ac{fpga} \cite{brandon2015sparse}.
-% Brandon proposes a way to address this resource-utilization problem by combining unused functional units to form extra processor cores which can execute more threads.
-% Hence optimizing the overall throughput and resource usage. % niet helemaal waar, eigenlijk gaat de paper hoofdzakelijk over de stop bit. Het voorgaande wordt aangestipt.
-
-% The previously described way of dealing with resource-utilization does not lead to optimal usage of \acrp{bram} in an \ac{fpga} \cite{hoozemans2015Contexts}.
-% For instance, a \ac{bram} has a 512 bytes size, but an architecture can only use 64 out of the 512 bytes.
-% By using the remaining \ac{bram} space multiple contexts can be created.
-% Hence, this reduces the time of a context switch because the pipeline does not have to be flushed (i.e. it can be saved in the remaining available \ac{bram} space).
-
-% Srinivasan, mentions the overhead problem when using a \acc{ha} (i.e. an architecture with an asymmetric issue width, e.g. 2 and 4, 2 and 8) \cite{Srinivasan2016EHW}.
-% Frequently switching from the architecture configuration leads to unnecessary overhead.
-% This problem is countered by proposing a limited 4 core mode and a small number of performance indicators.
-
-% \subsection{Adjustable cache}
-% Hoozemans, proposes a dynamically adjustable cache for the \ac{rvex} processor \cite{hoozemans2017cache}. 
-% This way each time the processor switches context, the cache is adjusted to the new context. 
-% The adjustable cache is implemented with the \ac{rvex} instruction set. 
-% This instruction set supports the identification of private and shared data in caches. 
-% Therefore creating the possibility to only broadcast shared data over the data-bus while only updating the private data to the main memory when the process is finished.
-% The results obtained from this implementation are more or less identical to other shared cache mechanisms while reducing the number of broad casted cache requests by 21\%.
-
-% Inherent application ILP (Instruction Level Parallelism) creates unused resources and loss in performance as stated by Brandon \cite{brandon2017}. 
-% Brandon, proposes a technique to increase the continuous use of resources and hereby increasing the overall performance no matter what application needs to be executed.
-% The designed dynamic (polymorphic) implementation of the \ac{vliw} processor shows an increase of 7\% in performance and 5\% less area used compared to a processor that uses fixed cores \cite{brandon2017}.
-
-
-
-% \section{Possible combinations} \label{sec:possible_combs}
-% \lettrine{I}{n} the previous section different techniques were covered that improve the performance of a \ac{ha} or \ac{ra}.
-% To sum up:
-% \begin{itemize}
-% \item Raising the abstraction level of the \ac{ra} design process \cite{wold2014relocatable}
-% \item Adjusting the instruction cache simultaneously with architecture reconfiguration \cite{anjam2014Simultaneous}
-% \item Re-using functional units to form an extra processor core \cite{brandon2015sparse}
-% \item Using the remaining \ac{bram} space to create multiple contexts \cite{hoozemans2015Contexts}
-% \item Diminishing the overhead of too many architecture reconfigurations by a limited number of modes and some simple performance counters \cite{Srinivasan2016EHW}
-% \item Using a dynamically adjustable cache \cite{hoozemans2017cache, brandon2017}
-% \end{itemize}
-
-% The approach of Srinivasan \cite{Srinivasan2016EHW} could be combined with all the other previously mentioned techniques.
-% Because all above mentioned papers use an \ac{fpga} as their implementation platform.
-% The proposed limitation of the number of cores prevents too frequent reconfigurations of an architecture.
-
-% Furthermore, all described techniques could benefit from using the remaining \ac{bram} space.
-% Not using a \ac{fpga} to its full extend is a wasted of technology.
-% This will improve the time it takes to switch from a context significantly (make it almost instantaneously).
-
-% Combining the work of Anjam \cite{anjam2014Simultaneous} and Hoozemans \cite{hoozemans2017cache} looks to be promising in the sense that they are complementary.
-% However, limiting the reconfigurability, as proposed by Srinivasan, could diminish the effects of cache adjustment. 
-% The same goes for the reuse of functional units as proposed by Brandon \cite{brandon2015sparse} and Srinivasan \cite{Srinivasan2016EHW}. 
-
-% Raising the abstraction level of the design process could be useful in a later stage when software should be adapted for the final architecture.
-% So this technology improvement is not a feasible combination of the previously mentioned improvements.
-% This solution focuses on the environment in which \acsp{ra} are developed, not the direct improvement of \acsp{ra}.
-
-% To conclude, limiting the number of architectural modes and use of the remaining \ac{bram} space in combination with a reconfigurable cache we expect to achieve improved results. 
-% An apparent difficulty lies in the design choice of combining a limited architectural processor and dynamic reconfigurability of the cache.
-% Nonetheless, it should theoretically lead to a better performance of a \ac{ra}. 
