@@ -21,8 +21,8 @@ In the process of applying the aforementioned optimization's some simplifying as
 For instance, a wire length of 2mm is assumed everywhere. 
 The receiver equalization is omitted.
 
-\begin{figure}[]
-	\centering
+\begin{figure}	\centering
+	
 	\includegraphics[width=0.78\linewidth]{Figures/Rep2Overview.png}
 	\caption{Overview of the proposed transceiver for \acsp{noc}, Source: \cite{schinkel2009low}.} 
     \label{fig:rep2:overview}
@@ -68,8 +68,8 @@ A series capacitance $C_{TX}$ is used to drive the interconnect (see: \cref{fig:
 This capacitor acts as a capacitive divider which reduces a capacitive related swing by $C_{TX} / ( C_{WIRE} + C_{TX})$ and increases the bandwidth as $C_{TX}$ gives each transition an overshoot see: \cref{fig:rep2:capovershoot}.
 Also, $C_{TX}$ attenuates the supply noise in comparison to low-swing transmitters.
 
-\begin{figure}[]
-	\centering
+\begin{figure}	\centering
+	
 	\includegraphics[width=0.8\linewidth]{Figures/Rep2TransmitterCap.png}
 	\caption{Behaviour comparison of conventional transmitter (a) and a capactive transmitter (b), Source: \cite{schinkel2009low}.} 
     \label{fig:rep2:capovershoot}
@@ -81,8 +81,8 @@ The capacitive transmitter has a 25 fJ overhead were a Multi-$V_{DD}$ low-swing 
 
 \subsubsection{Sense amplifier} \label{sss:rep2:senseamp} %IV Receiver and optimal swing
 
-\begin{figure}[]
-	\centering
+\begin{figure}	\centering
+	
 	\includegraphics[width=0.6\linewidth]{Figures/Rep2DoubleTail.png}
 	\caption{Double tail sense amplifier, Source: \cite{schinkel2009low}.} 
     \label{fig:rep2:doubletail}
@@ -110,8 +110,8 @@ Parallel to the capacitive transmitter a half-rate clock is transmitted ("double
 The sense amplifier consist of two parts (as earlier described).
 
 
-\begin{figure}[]
-	\centering
+\begin{figure}	\centering
+	
 	\includegraphics[width=0.9\linewidth]{Figures/Rep2Transceiver.png}
 	\caption{The complete transceiver, Source: \cite{schinkel2009low}.} 
     \label{fig:rep2:transceiver}

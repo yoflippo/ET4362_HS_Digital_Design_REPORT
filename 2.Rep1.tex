@@ -11,15 +11,15 @@ Nowadays, digital systems are relatively large \footnote{more parallel I/O leads
 To correct for this, timing recovery (or symbol synchronization \cite{mueller1976timing}) is applied.
 Parallel links are conventionally implemented as \acc{embeddedlink} (see: \cref{fig:rep1:seriallinks}) or as \acc{synclink}  (see: \cref{fig:rep1:synclinks}).
 
-\begin{figure}[]
-	\centering
+\begin{figure}	\centering
+	
 	\includegraphics[width=0.8\linewidth]{Figures/Rep1SourceSync.png}
 	\caption{Ensemble of serial links (\textit{embedded clock link}) (\ac{embeddedlink}), Source: \cite{agrawal20098}.} 
     \label{fig:rep1:seriallinks}
 \end{figure}
 
-\begin{figure}[]
-	\centering
+\begin{figure}	\centering
+	
 	\includegraphics[width=0.8\linewidth]{Figures/Rep1EnsembleSerLinks.png}
 	\caption{Source-synchronous links (\textit{forwarded-clock link}) (\ac{synclink}), Source: \cite{agrawal20098}.} 
     \label{fig:rep1:synclinks}
@@ -36,8 +36,8 @@ This design comes with an power and area overhead of 10-15\% relative to \ac{syn
 The design of the \ac{coltimrec} is shown in \cref{fig:rep1:coltimrec}. 
 It does not contain a clock link (as in \ac{synclink}) and instead of a local \acc{cdr} as seen in \cref{fig:rep1:seriallinks} the local clock data is connected to a \acl{gtr} block (\ac{gtr}) which carries the responsibility of the providing the global clock.
 
-\begin{figure}[]
-	\centering
+\begin{figure}	\centering
+	
 	\includegraphics[width=0.85\linewidth]{Figures/Rep1CombLink.png}
 	\caption{\acc{coltimrec}, Source: \cite{agrawal20098}.} 
     \label{fig:rep1:coltimrec}
@@ -89,8 +89,8 @@ When the number of channels share timing information the dithering jitter reduce
 Wideband jitter tracking, by reducing dithering jitter on the received clock, is possible when implementing \ac{coltimrec} however there is an area and power overhead (respectively 8.5\% and 15\% per receiver).
 
 
-\begin{figure}[]
-	\centering
+\begin{figure}	\centering
+	
 	\includegraphics[width=0.7\linewidth]{Figures/Rep1Result.png}
 	\caption{Measured RMS jitter for different degrees of collaboration, Source: \cite{agrawal20098}.} 
     \label{fig:rep1:result}
