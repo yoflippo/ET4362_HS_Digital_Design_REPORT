@@ -1,17 +1,28 @@
 \section{Introduction} \label{sec:introduction} 
 
-Almost all effort in the domain of computer engineering is put in increasing the data throughput and bandwidth. 
-% Almost everyone if familiar with Moore's Law.
-% Engineers are still actively trying to increase the performance of computers.
-Chips are becoming increasingly larger (partially due to the increase of the number of cores).
-So more data can be processed in the same amount of time.
-Data has to be shared between cores and other components of a CPU.
-This is were High Speed Interfaces come in play. 
+Almost all effort in the domain of computer engineering is put in increasing the data throughput. 
+% Chips are becoming increasingly larger (partially due to the increase of the number of cores).
+% So more data can be processed in the same amount of time.
+
+Computer systems consists of different parts. 
+Most bottlenecks of computer systems exist within the transitions or crossings of these parts.
+E.g. Data has to be shared between the processor cores, cache, RAM, GPU, etc.
+High speed interfaces enable designers to alleviate or circumvent bottlenecks.
 However, data not only has to be shared between cores but also between other components of a computer system.
-To get the most out of a computer system all parts should be aligned, so no bottlenecks are present.
+To get the most out of a computer systems all parts should be structurally aligned.
+
+In this review 4 papers are covered regarding the theme \textit{High Speed Interfaces}. 
+From a high level perspective the papers revolve around increasing the bandwidth or throughput of a computer system which would otherwise lead to bottlenecks and on how to diminish them.
+The central question being: in what way can the techniques described be combined to benefit the on-chip and off-chip performance of a computer system?
+
+To give an overview of the covered papers:
+The first paper (\cite{steenkiste1997high}) revolves around a high-speed network interface for distributed-memory systems.
+The second paper (\cite{agrawal20098}) discusses the creation of a 5 Gb/s parallel receiver with collaborative timing recovery.
+The third paper (\cite{schinkel2009low}) talks about a high-speed transceiver for network-on-chip communication.
+The fourth paper (\cite{zhang2009high}) revolves around high performance on-chip differential signaling using passive compensation.
+The area of high speed interfaces requires knowledge about high speed analog and digital design.
 
 
-In this review 4 papers are summarized regarding \textit{High Speed Interfaces}. 
 
 % Motive: Statement indicating why the research was done (e.g. a gap in
 % knowledge, contradictory results). The motive leads to the objective.
@@ -37,4 +48,3 @@ In this review 4 papers are summarized regarding \textit{High Speed Interfaces}.
 % Most recent techniques will be discussed in \cref{sec:sota}.
 % In \cref{sec:possible_combs}, possible combinations of these techniques are discussed. 
 % Finally, the most feasible combination of techniques is proposed in \cref{sec:conclusion}.
-

@@ -1,6 +1,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%  3  %%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\subsection{High performance on-chip differential signaling using passive compensation for global communication \cite{zhang2009high}} \label{ss:zhang2009high}
+\section{High performance on-chip differential signaling using passive compensation for global communication \cite{zhang2009high}} \label{ss:zhang2009high}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%  3  %%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \begin{figure}	\centering
@@ -26,7 +26,7 @@ Finally the \ac{otl} is compared with repeated RC wires.
 \summary
 %A. On-Chip T-Line
 The proposed signaling schema for global wiring is shown in \cref{fig:rep3:overview}.
-For a wire the values of $R_{d}, C_{d} and R_{l}$ determine the eye-opening which are optimized in the optimization flow.
+For a wire the values of $R_{d}$, $C_{d}$ and $R_{l}$ determine the eye-opening which are optimized in the optimization flow.
 
 The \ac{otl} is very lossy ($R \neq 0$ and $G \neq 0$) because of the miniaturization of the cross section of the wire.
 It can operate in the RC or in the LC region given different frequencies (respectively based on $\omega L \ll R$ (upto 10 GHz) and $\omega L \gg R$).
@@ -54,7 +54,7 @@ To find the optimum passive compensation for high speed compensation four parame
 Here $R_{s}$ is the output resistance of the inverter chain output.
 It has to be optimized to minimize the sense amplifier delay.
 
-This optimization problem is constrained as a non-linear programming problem and uses the \acc{sqp} to solve it.
+This optimization problem is constrained as a non-linear programming problem and uses \acc{sqp} to solve it.
 The global design goals are to minimize: latency (\textbf{min-d}), latency-power product (\textbf{min-dp}) and the $latency^{2}$-power product (\textbf{min-ddp}).
 % global explanation of optimizaiton work flow
 The optimization flow inputs are the technology node and wire dimensions.
@@ -63,10 +63,10 @@ In each iteration the delay and power parameters of the wire are derived after w
 Based on this the eye opening is determined.
 Given the design goals the cost function is evaluated by combination of delay and power of both wires and transceivers.
 This is utilized by the \ac{sqp} algorithm for optimization.
-Finally, the flow output the optimal values.
+Finally, the design flow outputs the optimal values.
 
 % Experimental results
-The scheme is optimized under the aforementioned design goals and with four different spacing and then compared with repated RC wires (which are also optimized for the different design goals).
+The scheme is optimized under the aforementioned design goals and with four different spacings and then compared with repated RC wires (which are also optimized for the different design goals).
 
 For comparison purposes the normalised delay, power and throughput are used which are respectively defined as: $delay_{n} = \frac{\text{propagation delay}}{\text{wire length}}$, $power_{n} = \frac{\text{energy per bit}}{\text{wire length}}$ and $throughput_{n} = \frac{\text{frequency}}{\text{wire pitch}}$.
 
@@ -82,7 +82,7 @@ For $power_{n}$ the \ac{otl} performs better in the whole technology node spectr
 In \cref{fig:rep3:normthrough} the $throughput_{n}$ is shown with regards to the different optimization criteria.
 At \textit{90 nm} technology the RC wire has higher throughput than the \ac{otl}.
 The throughput of RC wires decreases due to the usage of smaller repeaters and smaller wire width to reduce the power in the range from \textit{90 nm} to \textit{45 nm}.
-In general after the \textit{45 nm} technology the throughput of the schemes are very close, but the throughput of the \ac{otl} is higher.
+In general after the \textit{45 nm} technology the throughput of the schemes is very close, but the throughput of the \ac{otl} is higher.
 
 %conclusion
-The wire with the largest spacing (S=2H) give the optimal results, this is due to higher $Z_{0}$ with reduces the attenuation along the wire.
+The wire with the largest spacing (S=2H) gives the optimal results, this is due to higher $Z_{0}$ with reduces the attenuation along the wire.

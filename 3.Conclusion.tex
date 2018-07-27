@@ -1,0 +1,47 @@
+\section{Conclusion}
+The covered papers (\cite{steenkiste1997high, agrawal20098, schinkel2009low, zhang2009high} all discus different topics within the theme of high speed interfacing.
+
+In \cite{steenkiste1997high} a solution is created to increase the I/O \ac{bw} for distributed-memory systems (the iWarp \footnote{a supercomputer system}).
+This paper is loosely connected to the others papers as it incorporates a specific high level system.
+The other papers dive in to more detailed implementations regarding the advancement of \ac{bw} and throughput in high speed systems.
+
+From a high level perspective the remaining papers talk about:
+\begin{itemize}
+    \item \cite{agrawal20098}: clock retrieval for an 8-channel transceiver (off-chip)
+    \item \cite{schinkel2009low}: high-speed transceivers for network-on-chip
+    \item \cite{zhang2009high}: on-chip high-speed differential signaling using passive compensation
+\end{itemize}
+%what are the differences and similarities of the last three papers (1-3)?
+
+As the speed of digital communication increases, digital designers need to take \textit{analog} effects in to account.
+This counts for on-chip communication as well as off-chip communication.
+With technology scaling, the interconnect is becoming a performance bottleneck.
+
+The techniques described in \cite{schinkel2009low, zhang2009high} could be combined for optimization of on-chip communication.
+The former describes techniques to prevent crosstalk and increased sensitivity in the sense-amplifiers, but does not necessarily take in to account the effect of longer lines.
+This is were the latter could be use full. 
+Passive compensation allows for better performance in throughput and power with longer connections, but has the disadvantage of a complex design flow.
+This could lead to further improvement of on-chip communication.
+
+Techniques covered in \cite{agrawal20098} could be implemented in high-speed parallel off-chip communication to prevent high power consumption and allow for high \ac{bw}.
+However, design techniques have to be extended because more effects have to be taken into account.
+
+% \section{Conclusion} \label{sec:conclusion}
+% Conclusions and future prospects
+% are clearly linked to the research question in the introduction, indicating to what extent the research question has been answered
+% follow logically from all the previous material 
+% are preferably followed by recommendations for further research (future prospects)word limit is respected (+/- 200)
+
+% In the conclusion, you should:
+
+% - Summarize major contributions of significant studies and articles to the body of knowledge under review, maintaining the focus established in the introduction.
+% - Evaluate the current "state of the art" for the body of knowledge reviewed, pointing out major methodological flaws or gaps in research, inconsistencies in theory and findings, and areas or issues pertinent to future study.
+% - Conclude by providing some insight into the relationship between the central topic of the literature review and a larger area of study such as a discipline, a scientific endeavor, or a profession.
+
+\subsection{Remarks}
+From \cite{agrawal20098} the importance of the \ac{pll} and the \ac{dll} was grasped. 
+These subjects are a perfect addition to this course.
+The paper from \cite{agrawal20098} was pleasant to review but relatively hard to summarize without diving into too much details.
+The \cite{steenkiste1997high} is a specific solution for \ac{dmm} systems and does not provide a generic solution and is somewhat
+of a stranger in our midst.
+The paper of \cite{zhang2009high} is also focused on signal propagation instead of purely focused on signal interfacing.
