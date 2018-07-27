@@ -74,7 +74,7 @@ Applications produce output by sending data over the internal interconnect to th
 \subsection{Transport protocol processing}
 Protocol processing is an potential bottleneck in network communication, it is inherently sequential.
 There are two general categories in which protocol processing can be divided: overhead associated with every packed sent and overhead that scales with the number of bytes.
-The later will dominate as networks get faster.
+The latter will dominate as networks get faster.
 The solution lies in making these operations efficient by minimizing the number of times the data is touched.
 
 %4.2 network interface architeutre
@@ -86,7 +86,7 @@ The solution lies in making these operations efficient by minimizing the number 
 \end{figure}
 
 In \cref{fig:rep4:hib} the \ac{hib} is shown.
-In the architecture the iWarp processor is responsible for per-packet operations, while the \acc{cab} (gray areas) is responsible for the per-byte operations.
+In the architecture the iWarp processor is responsible for per-packet operations, while the \acc{cab}, highlighted in the gray areas, is responsible for the per-byte operations.
 %MS: missing connection with the CAB here
 The high-bandwidth requirements typically make the memory bus the bottleneck of the network interface (\ac{hib}).
 The \ac{hib} uses a couple of mechanisms to optimize the memory bandwidth utilization: it uses two iWarp processors (doubling of memory bandwidth) and the \ac{hib} uses two levels of memory optimized for different types of accesses.
@@ -95,9 +95,9 @@ The \ac{hib} uses a couple of mechanisms to optimize the memory bandwidth utiliz
 % Measurement for raw \ac{hippi} and UDP over IP gave the same throughput results establishing that the UPD/IP implementation is very efficient.
 
 % 5. THE STREAMS I/O ARCHITECTURE
-\subsection{Streams I/O architecture}
+\subsection{Stream I/O architecture}
 There are two phases in which the transfer of data happens: the data is transferred from the distributed-memory system to the network interface and in the second phase data is transferred to the network.
-Managing the first phase is a resource management problem which is tackled with the streams architecture (see: \cref{fig:rep4:streams}).
+Managing the first phase is a resource management problem which is tackled with the stream architecture (see: \cref{fig:rep4:streams}).
 
 \begin{figure}
     \centering
@@ -112,14 +112,14 @@ The application on the \ac{dmm} is responsible for distribution of the data to t
 The \textit{stream manager} on the network interface is responsible for efficient data movement of multiple streams.
 
 %5.2 dataformat
-In the streams architecture the application provides the stream manager with information regarding the data format. 
+In the stream architecture the application provides the stream manager with information regarding the data format. 
 This way the stream manager can plan and optimize the data transfers.
 
 %5.3 iWarp streams software
 
 %6. Data reshuffling in support of high-speed I/O
 \subsection{Reshuffling}
-Utilizing large number of processors requires data parallelism.
+Utilizing large number of processors allows for data parallelism.
 The data throughput depends on the number of links (due to striping) and the total message size.
 Using data reshuffle, the throughput is optimized for different applications.
 
@@ -130,7 +130,8 @@ Also, reshuffling is an easy to parallelize operation which enables efficient re
 Parallelizing compilers have enough information to map a program onto a \ac{dmm} and provide it with the appropriate calls to do reshuffling.
 
 %Conclusion
+\subsection{Conclusion}
 An architecture for network I/O is presented on \acs{dmm} and fast I/O rates over the iWarp \ac{hippi} interface were enabled.
-This throughput was possible by a couple of key features: offloading of application specific tasks to the \ac{dmm}, the streams manager optimizes the network resource management.
+This throughput was possible by a couple of key features: offloading of application specific tasks to the \ac{dmm}, the stream manager optimizes the network resource management.
 
 

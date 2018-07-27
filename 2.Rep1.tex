@@ -65,6 +65,7 @@ The filter delivers the decoded information to the \ac{pll} and the phase interp
 The \ac{pll} receives the filter information and uses it to select odd and even phase difference (2 4b-muxes).
 This is coarse grained phase generation.
 The phase interpolator provides a 256 phase steps per clock period delivery (more fine grained phase adjustment).
+
 % Explain the GLOBAL working of the phase adjustment element
 The phase adjustment consists of two \accs{dll}, data sampler (8 channels), duty-cycle corrector, skew-compensation element and a phase spacing error correction circuit (see: \cref{fig:rep1:receiver}).
 The global clock (from the \ac{gtr}) is corrected for its duty-cycle.
